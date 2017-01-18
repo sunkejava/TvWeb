@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sites>
+	<site>
+		<title>音悦台MV</title>
+		<charset>UTF-8</charset>
+		<url>http://mv.yinyuetai.com</url>
+		<tv-list-imgname-selector>.thumb_mv a img</tv-list-imgname-selector>
+		<tv-list-id-selector>.thumb_mv a i</tv-list-id-selector>
+		<tv-list-typeName-selector>.on</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.thumb_mv .v_time_num</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.info .data span:nth-last-of-type(2)</tv-list-addTime-selector>
+		<tv-list-content-selector>.description</tv-list-content-selector>
+		<tv-list-stars-selector>.info p:first-of-type</tv-list-stars-selector>
+		<tv-list-next-selector>.pagetype .nextpage</tv-list-next-selector>
+	</site>
+	<site>
+		<title>爱奇艺视频</title>
+		<charset>UTF-8</charset>
+		<url>http://www.iqiyi.com/lib/tsdy/3p7j5hpfyu.html</url>
+		<tv-list-imgname-selector>.site-piclist .site-piclist_pic img</tv-list-imgname-selector>
+		<tv-list-id-selector>.site-piclist .site-piclist_pic a</tv-list-id-selector>
+		<tv-list-typeName-selector>.mod_sear_menu .selected</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.icon-vInfo</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.site-piclist_info div:last-child</tv-list-stars-selector>
+		<tv-list-next-selector>.mod-page .a1:last-child</tv-list-next-selector>
+	</site>
+	<site>
+		<title>优酷视频</title>
+		<charset>UTF-8</charset>
+		<url>http://list.youku.com/</url>
+		<tv-list-imgname-selector>.p-thumb a</tv-list-imgname-selector>
+		<tv-list-id-selector>.p-thumb img</tv-list-id-selector>
+		<tv-list-typeName-selector>.yk-filter-panel .current</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.p-time</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.actor</tv-list-stars-selector>
+		<tv-list-next-selector>.yk-pages .next a</tv-list-next-selector>
+	</site>
+	<site>
+		<title>腾讯视频</title>
+		<charset>UTF-8</charset>
+		<url>http://v.qq.com/</url>
+		<tv-list-imgname-selector>.figures_list .list_item .figure_title a</tv-list-imgname-selector>
+		<tv-list-id-selector>.list_item a img</tv-list-id-selector>
+		<tv-list-typeName-selector>.selected,.current</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.mask_txt</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.figure_desc</tv-list-stars-selector>
+		<tv-list-next-selector>.mod_page</tv-list-next-selector>
+	</site>
+	<site>
+		<title>芒果TV</title>
+		<charset>UTF-8</charset>
+		<url>http://list.mgtv.com/3/--------2835073-2-1-0--.html</url>
+		<tv-list-imgname-selector>.u-title</tv-list-imgname-selector>
+		<tv-list-id-selector>.u-image</tv-list-id-selector>
+		<tv-list-typeName-selector>.m-catgory-list .on</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.u-time</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.u-desc</tv-list-stars-selector>
+		<tv-list-next-selector>.w-pages .next</tv-list-next-selector>
+	</site>
+	<site>
+		<title>YY神曲榜单</title>
+		<charset>UTF-8</charset>
+		<url>http://shenqu.yy.com/hot/daily.html</url>
+		<tv-list-imgname-selector>.item-content img</tv-list-imgname-selector>
+		<tv-list-id-selector>.list-link a</tv-list-id-selector>
+		<tv-list-typeName-selector>h1</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.item-content div</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.item-author</tv-list-stars-selector>
+		<tv-list-next-selector>.empty</tv-list-next-selector>
+	</site>
+	<site>
+		<title>YY神曲分类</title>
+		<charset>UTF-8</charset>
+		<url>http://shenqu.yy.com/clist/t10026.html</url>
+		<tv-list-imgname-selector>.item-content img</tv-list-imgname-selector>
+		<tv-list-id-selector>.item-content .target-link</tv-list-id-selector>
+		<tv-list-typeName-selector>.class-title</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.pcount</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.item-info .text</tv-list-stars-selector>
+		<tv-list-next-selector>.pagination .next</tv-list-next-selector>
+	</site>
+	<site>
+		<title>搜狐片库</title>
+		<charset>UTF-8</charset>
+		<url>http://film.sohu.com/list_0_0_0_0_0_1_60.html</url>
+		<tv-list-imgname-selector>.movie-img a</tv-list-imgname-selector>
+		<tv-list-id-selector>.v_name_info</tv-list-id-selector>
+		<tv-list-typeName-selector>.selected</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.v_score</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.sub_info</tv-list-stars-selector>
+		<tv-list-next-selector>.menu-next a</tv-list-next-selector>
+	</site>
+	<site>
+		<title>久久热视频</title>
+		<charset>UTF-8</charset>
+		<url>http://www.99ff1.com/categories/34f2b06d023bb081554c7378c9b2de44/</url>
+		<tv-list-imgname-selector>.preview img</tv-list-imgname-selector>
+		<tv-list-id-selector>.thumb-content .kt_imgrc</tv-list-id-selector>
+		<tv-list-typeName-selector>.title</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.duration</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.data</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.views</tv-list-stars-selector>
+		<tv-list-next-selector>.block_content span+a</tv-list-next-selector>
+	</site>
+	<site>
+		<title>51AVI视频</title>
+		<charset>UTF-8</charset>
+		<url>http://av51.biz/kr/</url>
+		<tv-list-imgname-selector>.caption a</tv-list-imgname-selector>
+		<tv-list-id-selector>.lazyload</tv-list-id-selector>
+		<tv-list-typeName-selector>title</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.duration</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.caption a</tv-list-stars-selector>
+		<tv-list-next-selector>.empty</tv-list-next-selector>
+	</site>
+	<site>
+		<title>91porn</title>
+		<charset>UTF-8</charset>
+		<url>http://email.91dizhi.at.gmail.com.7h1.space/index.php</url>
+		<tv-list-imgname-selector>.imagechannel a img,.imagechannelhd a img</tv-list-imgname-selector>
+		<tv-list-id-selector>.imagechannel a,.imagechannelhd a</tv-list-id-selector>
+		<tv-list-typeName-selector>.empty</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>.listchannel</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.listchannel</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.listchannel</tv-list-stars-selector>
+		<tv-list-next-selector>.pagingnav span+a</tv-list-next-selector>
+	</site>
+	<site>
+		<title>恋恋影视</title>
+		<charset>UTF-8</charset>
+		<url>http://www.2ta.tv</url>
+		<tv-list-imgname-selector>#ka</tv-list-imgname-selector>
+		<tv-list-id-selector>#ha</tv-list-id-selector>
+		<tv-list-typeName-selector>title</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>#si</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.empty</tv-list-stars-selector>
+		<tv-list-next-selector>#ys .on+a</tv-list-next-selector>
+	</site>
+	<site>
+		<title>乐视视频</title>
+		<charset>UTF-8</charset>
+		<url>http://list.le.com</url>
+		<tv-list-imgname-selector>#ka</tv-list-imgname-selector>
+		<tv-list-id-selector>#ha</tv-list-id-selector>
+		<tv-list-typeName-selector>title</tv-list-typeName-selector>
+		<tv-list-timeLong-selector>#si</tv-list-timeLong-selector>
+		<tv-list-addTime-selector>.empty</tv-list-addTime-selector>
+		<tv-list-content-selector>.empty</tv-list-content-selector>
+		<tv-list-stars-selector>.empty</tv-list-stars-selector>
+		<tv-list-next-selector>.empty</tv-list-next-selector>
+	</site>
+</sites>
