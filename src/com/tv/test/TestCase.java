@@ -143,7 +143,7 @@ public class TestCase{
 	@Test
 	public void getTvUrlTest(){
 		GetTvUrlImpl gettvurlImpl = new GetTvUrlImpl(); 
-		String dizhi = gettvurlImpl.getTvUrlImgUrl("http://shenqu.yy.com/play/id_1103653387979597894.html");
+		String dizhi = gettvurlImpl.getTvUrlImgUrl("http://shenqu.yy.com/play/id_1103653387979597894.html",10);
 		System.out.println(dizhi);
 	}
 }

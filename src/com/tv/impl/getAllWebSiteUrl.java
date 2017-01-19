@@ -143,7 +143,7 @@ public class getAllWebSiteUrl implements Processor {
 						getallurls(nextUrl);
 					}
 				}else{
-					tvmodel=tvModelImpl.getsTvList(url,10);
+					tvmodel=tvModelImpl.getsTvList(url,20);
 					String nextUrl="";
 					for(TvModel tv:tvmodel){
 						if(tv.getTvName() == null){
