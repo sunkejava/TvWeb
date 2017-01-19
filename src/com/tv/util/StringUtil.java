@@ -76,7 +76,8 @@ public class StringUtil {
 		//返回左边文本的最后一个字符位置
 		int beginInt = str.lastIndexOf(leftstr)+leftstr.length();
 		//返回右边文本地第一个位置
-		int endInt = str.indexOf(rightstr);
+		int endInt = str.indexOf(rightstr,beginInt);
+		//System.out.println("beginInt:"+beginInt+"---EndInt:"+endInt);
 		bstr = str.substring(beginInt,endInt);
 		return bstr;
 	}

@@ -6,7 +6,7 @@ package com.tv.enums;
  *
  */
 public enum TvSiteEnum {
-	YYShenQu(1,"shenqu.yy.com/hot"),
+	YYShenQu(1,"shenqu.yy.com"),
 	YinYueTai(2,"yinyuetai.com"),
 	YouKu(3,"youku.com"),
 	TengXun(4,"v.qq.com"),
