@@ -297,7 +297,8 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <div id="xc" class="cf"><span id="xct">猜你喜欢</span>
             <br>
             <sql:query dataSource="${snapshot}" var="result3">
-				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+9;
+				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+9
+				or id between <%=IDS %>-1 and <%=IDS %>-9;
 			</sql:query>
 			<c:forEach var="row3" items="${result3.rows}">
             <div class="hm">
@@ -323,7 +324,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <div class="alike cf ne"></div>
         <div id="s1" class="s1 f2">
             <sql:query dataSource="${snapshot}" var="result4">
-				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+17 and typeName='<%=tvTypeName %>';
+				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls 
+				where (id between <%=IDS %>-1 and <%=IDS %>-9 and typeName='<%=tvTypeName %>')
+				or (id between <%=IDS %>+1 and <%=IDS %>+9 and typeName='<%=tvTypeName %>');
 			</sql:query>
 			<c:forEach var="row4" items="${result4.rows}">
             <li> 

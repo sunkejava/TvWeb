@@ -172,21 +172,21 @@
      url="jdbc:mysql://localhost:3306/db_tv?useUnicode=true&characterEncoding=utf8"
      user="root"  password="perp123"/>
      <sql:query dataSource="${snapshot}" var="result2">
-		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'Beautyleg%'  AND tvUrl NOT LIKE '%bn%' ORDER BY id LIMIT 0,10)
+		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'Beautyleg%'  AND tvUrl NOT LIKE '%bn%' ORDER BY id desc LIMIT 0,10)
 		UNION
-		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE '3AGirl%' ORDER BY id LIMIT 0,10)
+		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE '3AGirl%' ORDER BY id desc LIMIT 0,10)
 		UNION
-		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'siya%'   ORDER BY id LIMIT 0,10)
+		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'siya%'   ORDER BY id desc LIMIT 0,10)
 		UNION
-		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'ru1mm%'  ORDER BY id LIMIT 0,10)
+		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'ru1mm%'  ORDER BY id desc LIMIT 0,10)
 		UNION
-		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'AISS%' ORDER BY id LIMIT 0,10)
+		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'AISS%' ORDER BY id desc LIMIT 0,10)
 		UNION
-		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE '锦尚%' ORDER BY id LIMIT 0,10)
+		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE '锦尚%' ORDER BY id desc LIMIT 0,10)
 		UNION
-		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'vipc1%' ORDER BY id LIMIT 0,10)
+		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE 'vipc1%' ORDER BY id desc LIMIT 0,10)
 		UNION
-		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE '经典%' ORDER BY id LIMIT 0,10)		
+		(SELECT id,tvName,tvImgUrl FROM db_tvurls WHERE platformName = '恋恋影视' AND typeName LIKE '经典%' ORDER BY id desc LIMIT 0,10)		
 	</sql:query>
         <div class="hm2">
             <c:forEach var="row2" items="${result2.rows}">

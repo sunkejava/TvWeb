@@ -127,7 +127,7 @@
      url="jdbc:mysql://localhost:3306/db_tv?useUnicode=true&characterEncoding=utf8"
      user="root"  password="perp123"/>
      		<sql:query dataSource="${snapshot}" var="result1">
-				SELECT id,tvName,tvImgUrl FROM db_tvurls where typeName like '%<%=context%>%' limit <%=(p-1)*10 %>,10;
+				SELECT id,tvName,tvImgUrl FROM db_tvurls where typeName like '%<%=context%>%' ORDER BY id DESC limit <%=(p-1)*10 %>,10;
 			</sql:query>
 			<c:forEach var="row1" items="${result1.rows}">
             <div id="hm" class="hm"> <span class="add" id="13875" title="添加到点播单，稍后观看，在观看记录保存">+</span> 
