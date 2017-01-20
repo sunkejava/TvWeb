@@ -61,6 +61,9 @@
 				hdVideoUrl = result22.getJSONObject(0).get("hdVideoUrl").toString();
 				hcVideoUrl = result22.getJSONObject(0).get("hcVideoUrl").toString();
 				heVideoUrl = result22.getJSONObject(0).get("heVideoUrl").toString();
+				hdVideoUrl=hdVideoUrl=="" || hdVideoUrl == null ? "" : hdVideoUrl;
+				hcVideoUrl=hcVideoUrl=="" || hcVideoUrl == null ? "" : hcVideoUrl;
+				heVideoUrl=heVideoUrl=="" || heVideoUrl == null ? "" : heVideoUrl;
 				}
 			}
 			
