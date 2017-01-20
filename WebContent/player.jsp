@@ -7,17 +7,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 			String IDS =request.getParameter("id");
+			IDS=IDS.matches(".*[a-zA-Z]+.*")?"79294":IDS;
 			String result =DbUtil.getContextFromID(IDS);
 			String[] ps = result.split("----");
-			String tvName = ps[1];
-			String tvUrl = ps[2];
-			String tvImgUrl = ps[3];
-			tvImgUrl = tvImgUrl.indexOf("+")>-1?StringUtil.leftString(tvImgUrl, "+"):tvImgUrl;
-			String tvTagsName = ps[4];
-			String tvContext = ps[5];
-			String platID = ps[6];
-			String tvTypeName = ps[7];
-			tvTypeName=tvTypeName.indexOf("(")>-1?StringUtil.leftString(tvTypeName, "("):tvTypeName;
 			String plat="";
 			int platFormID;
 			String a="";
@@ -30,6 +22,27 @@
 			String hdVideoUrl="";
 			String hcVideoUrl="";
 			String heVideoUrl="";
+			String tvName = "";
+			String tvUrl = "";
+			String tvImgUrl = "";
+			String tvTagsName = "";
+			String tvContext = "";
+			String platID = "";
+			String tvTypeName = "";
+			if(result=="" || result == null){
+				response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+				String newLocn = "/TvWeb/index.jsp";
+				response.setHeader("Location",newLocn);
+			}else{
+			tvName = ps[1];
+			tvUrl = ps[2];
+			tvImgUrl = ps[3];
+			tvImgUrl = tvImgUrl.indexOf("+")>-1?StringUtil.leftString(tvImgUrl, "+"):tvImgUrl;
+			tvTagsName = ps[4];
+			tvContext = ps[5];
+			platID = ps[6];
+			tvTypeName = ps[7];
+			tvTypeName=tvTypeName.indexOf("(")>-1?StringUtil.leftString(tvTypeName, "("):tvTypeName;	
 			if(platID.equals("恋恋影视")){
 				plat="LIAN";
 				platFormID=1;
@@ -48,28 +61,8 @@
 				hdVideoUrl = result22.getJSONObject(0).get("hdVideoUrl").toString();
 				hcVideoUrl = result22.getJSONObject(0).get("hcVideoUrl").toString();
 				heVideoUrl = result22.getJSONObject(0).get("heVideoUrl").toString();
-			}else if(platID.equals("")){
-				plat="51AVI";
-				platFormID=3;
-				JSONArray result22 = DataJsonp.GetDate(plat, tvUrl);
-				
-			}else if(platID.equals("YY神曲分类")|| platID.equals("YY神曲榜单")){
-				plat="YY";
-				platFormID=4;
-				JSONArray result22 = DataJsonp.GetDate(plat, tvUrl);
-			}else if(platID.equals("久久热视频")){
-				plat="99re";
-				platFormID=5;
-				JSONArray result22 = DataJsonp.GetDate(plat, tvUrl);
-			}else if(platID.equals("91porn")){
-				plat="91porn";
-				platFormID=6;
-			}else{
-				plat="quanwang";
-				platFormID=7;
-				JSONArray result22 = DataJsonp.GetDate(plat, tvUrl);
+				}
 			}
-			
 			
 		%>
 <html>
@@ -297,8 +290,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <div id="xc" class="cf"><span id="xct">猜你喜欢</span>
             <br>
             <sql:query dataSource="${snapshot}" var="result3">
-				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+9
-				or id between <%=IDS %>-1 and <%=IDS %>-9;
+				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+9;
 			</sql:query>
 			<c:forEach var="row3" items="${result3.rows}">
             <div class="hm">
@@ -324,9 +316,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <div class="alike cf ne"></div>
         <div id="s1" class="s1 f2">
             <sql:query dataSource="${snapshot}" var="result4">
-				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls 
-				where (id between <%=IDS %>-1 and <%=IDS %>-9 and typeName='<%=tvTypeName %>')
-				or (id between <%=IDS %>+1 and <%=IDS %>+9 and typeName='<%=tvTypeName %>');
+				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+17 and typeName='<%=tvTypeName %>';
 			</sql:query>
 			<c:forEach var="row4" items="${result4.rows}">
             <li> 

@@ -42,8 +42,10 @@ public class DbUtil {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(getresultOftvUrl("http://www.2ta.tv/3a9123423"));
-		
+		//System.out.println(getresultOftvUrl("http://www.2ta.tv/3a9123423"));
+		System.out.println(DbUtil.getContextFromID("70429a"));
+		String str = "138145a";
+		System.out.println(str.matches(".*[^a-zA-Z]+.*"));
 	}
 	/**
 	 * 根据url判断数据库中是否存在，存在返回fasle,不存在返回true
@@ -153,25 +155,21 @@ public class DbUtil {
 			con = dbutil.getCon();
 			String sql = "SELECT id,tvName,tvUrl,tvImgUrl,tagsName,context,platformName,typeName FROM db_tvurls WHERE id="+id;
 		    PreparedStatement pstmt;
+		    
 		    pstmt = (PreparedStatement)con.prepareStatement(sql);
 	        ResultSet rs = pstmt.executeQuery();
-	        System.out.println("============================");
-	        int a=1;
 	        while (rs.next()) {
-	            System.out.println("正在获取db_taotu中的第"+a+"条数据！！");
 	        	result = result+rs.getInt(1)+"----"+rs.getString(2)+"----"+rs.getString(3)+"----"+rs.getString(4)+"----"+rs.getString(5)+"----"+rs.getString(6)+"----"+rs.getString(7)+"----"+rs.getString(8);
-	        	a++;
 	        }
-	            System.out.println("============================");
-	            System.out.println(result);
 	            pstmt.close();
+			
 		} catch (Exception e1) {
-			System.err.println("数据库连接失败！！");
+			throw new RuntimeException(id + "获取失败！！" + e1);
 		} finally {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new RuntimeException(e);
 			}
 		}
 	    return result;

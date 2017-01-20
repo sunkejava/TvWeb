@@ -34,21 +34,21 @@ import net.sf.json.JSONObject;
  */
 public class DataJsonp {
 	public static void main(String[] args) throws Exception {
-		JSONArray restsss = GetDate("YY","99931031");//JSON及解析
-		System.out.println(restsss);
-		JSONArray rest = GetDate("YINYUETAI","833120");
+//		JSONArray restsss = GetDate("YY","99931031");//JSON及解析
+//		System.out.println(restsss);
+		JSONArray rest = GetDate("YINYUETAI","2761892");
 		System.out.println("hdVideoUrl:"+rest.getJSONObject(0).get("hdVideoUrl"));
 		System.out.println("hcVideoUrl:"+rest.getJSONObject(0).get("hcVideoUrl"));
 		System.out.println("heVideoUrl:"+rest.getJSONObject(0).get("heVideoUrl"));
-		System.out.println(rest);
-		JSONArray rests = GetDate("51AVI","204960");
-		System.out.println(rests);
-		JSONArray result22= GetDate("LIAN","http://www.2ta.tv/sy41");
-		String a =result22.getJSONObject(0).get("ks") + "&b="
-		+ result22.getJSONObject(0).get("type") + "&c=" + result22.getJSONObject(0).get("k1")
-		+ "&d=" + result22.getJSONObject(0).get("k3") + "&e="
-		+ result22.getJSONObject(0).get("k4")+ "&f=" + result22.getJSONObject(0).get("k6")+ "&g=" + result22.getJSONObject(0).get("k7");
-		System.out.println(a);
+//		System.out.println(rest);
+//		JSONArray rests = GetDate("51AVI","204960");
+//		System.out.println(rests);
+//		JSONArray result22= GetDate("LIAN","http://www.2ta.tv/sy41");
+//		String a =result22.getJSONObject(0).get("ks") + "&b="
+//		+ result22.getJSONObject(0).get("type") + "&c=" + result22.getJSONObject(0).get("k1")
+//		+ "&d=" + result22.getJSONObject(0).get("k3") + "&e="
+//		+ result22.getJSONObject(0).get("k4")+ "&f=" + result22.getJSONObject(0).get("k6")+ "&g=" + result22.getJSONObject(0).get("k7");
+//		System.out.println(a);
 		
 	}
 	
