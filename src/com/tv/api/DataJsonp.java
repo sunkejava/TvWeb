@@ -36,7 +36,7 @@ public class DataJsonp {
 	public static void main(String[] args) throws Exception {
 //		JSONArray restsss = GetDate("YY","99931031");//JSON及解析
 //		System.out.println(restsss);
-		JSONArray rest = GetDate("YINYUETAI","2761892");
+		JSONArray rest = GetDate("YINYUETAI","702474");
 		System.out.println("hdVideoUrl:"+rest.getJSONObject(0).get("hdVideoUrl"));
 		System.out.println("hcVideoUrl:"+rest.getJSONObject(0).get("hcVideoUrl"));
 		System.out.println("heVideoUrl:"+rest.getJSONObject(0).get("heVideoUrl"));
@@ -149,11 +149,16 @@ public class DataJsonp {
 					//获取需要的的内容并组成新的json对象2
 					JSONObject newjson = new JSONObject();
 					//获取神曲名称并加入新的Json对象中
-					newjson.put("hdVideoUrl",StringUtil.leftString(concent.get("hdVideoUrl").toString(), "?"));
-					//获取神曲歌手并加入新的Json对象中
-					newjson.put("hcVideoUrl", StringUtil.leftString(concent.get("hcVideoUrl").toString(), "?"));
-					//获取歌曲播放地址并加入新的Json对象中
-					newjson.put("heVideoUrl",StringUtil.leftString(concent.get("heVideoUrl").toString(), "?"));
+					if(concent.has("hdVideoUrl")){
+						newjson.put("hdVideoUrl",StringUtil.leftString(concent.get("hdVideoUrl").toString(), "?"));
+					}else if(concent.has("hcVideoUrl")){
+						//获取神曲歌手并加入新的Json对象中
+						newjson.put("hcVideoUrl", StringUtil.leftString(concent.get("hcVideoUrl").toString(), "?"));
+					}else if(concent.has("heVideoUrl")){
+						//获取歌曲播放地址并加入新的Json对象中
+						newjson.put("heVideoUrl",StringUtil.leftString(concent.get("heVideoUrl").toString(), "?"));
+					}
+					
 					newjson.put("title",context);
 					//将组建后的json对象数据加入到newarr数组中
 					thisj.add(newjson);
