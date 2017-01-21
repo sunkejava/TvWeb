@@ -26,7 +26,7 @@ public class GetTvUrlImpl extends AbstractSpider {
 			try {
 				if (TvSiteEnum.getEnumUrl(urls) == TvSiteEnum.JiuJiuRe.getUrl()) {
 					String purl = "http://www."+TvSiteEnum.JiuJiuRe.getUrl()+"/embed/"+StringUtil.betweenSting(urls, "videos/", "/");
-					System.out.println("获取久久热视频地址：" + purl);
+					//System.out.println("获取久久热视频地址：" + purl);
 					try {
 						//String resultcodes = super.crawl(purl);
 						URL url2 = new URL(purl);

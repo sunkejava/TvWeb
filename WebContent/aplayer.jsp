@@ -68,6 +68,9 @@ net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*,com.tv.impl.GetTvUrlImpl"%>
     <link rel="stylesheet" href="css/tv.css" type="text/css" media="screen">
     <script type="text/javascript" src="ckplayer/ckplayer.js" charset="utf-8"></script>
     <script src="js/ac.js"></script>
+    <script src="js/jquery.js"></script>
+	<script src="js/mediaelement-and-player.min.js"></script>
+	<link rel="stylesheet" href="css/mediaelementplayer.min.css" />
     <link rel="shortcut icon" href="http://m.syasn.com/favicon.ico" type="image/x-icon">
 </head>
 <body onload="show()" id="x" class="v bg101 c9 cs ssy slg yc" type="1" style="">
@@ -193,7 +196,14 @@ net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*,com.tv.impl.GetTvUrlImpl"%>
                             <br> <span id="pt2">专辑&nbsp;&gt; <a href="page.jsp?u=sy" id="LE" target="_blank"><%=tvTagsName %></a>&nbsp;</span> 
                         </div>
                     </div>
-                    <div id="a1"></div>
+                    <video width="960" height="571" id="player1" 
+                    poster="<%=tvImgUrl %>" 
+                    controls="controls" preload="none">
+							<source src="<%=tvUrl %>" type="video/mp4" title="mp4">
+					</video>
+					<div id="output">
+					</div>				
+					<span id="player1-mode"></span>
                     <div id="zj" class="nb in">
                         <div id="iy" class="nb" style="display: none;">
                             
@@ -271,30 +281,17 @@ net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*,com.tv.impl.GetTvUrlImpl"%>
                 <div id="jb">
 	                    <div id="j1">
 	                    	<c:forEach var="row1" items="${result1.rows}">
-		                    	<a href="player.jsp?id=<c:out value='${row1.id}'/>" target="_blank"><c:out value='${row1.tvName}'/></a>
+		                    	<a href="aplayer.jsp?id=<c:out value='${row1.id}'/>" target="_blank"><c:out value='${row1.tvName}'/></a>
 	                    	</c:forEach>
 	                    </div>
                     <div id="j2">
                     	<c:forEach var="row2" items="${result2.rows}">
-                    		<a href="player.jsp?id=<c:out value='${row2.id}'/>" target="_blank"><c:out value='${row2.tvName}'/></a>
+                    		<a href="aplayer.jsp?id=<c:out value='${row2.id}'/>" target="_blank"><c:out value='${row2.tvName}'/></a>
                     	</c:forEach>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="cyReward" role="cylabs" data-use="reward" sid="<%=IDS %>"></div>
-<script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysKOEP16"></script>
-<!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="<%=IDS %>" ></div> 
-<script type="text/javascript"> 
-(function(){ 
-var appid = 'cysKOEP16'; 
-var conf = 'prod_aa32cf21afc84404843c21a3734cd2c4'; 
-var width = window.innerWidth || document.documentElement.clientWidth; 
-if (width < 960) { 
-window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
-        
         <p>&nbsp;</p>
         <!-- rst -->
         <div id="xc" class="cf"><span id="xct">猜你喜欢</span>
@@ -311,7 +308,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                     </div>
                     <div id="si"><span>&nbsp;9584&nbsp;<span class="sm">人喜欢&nbsp;</span></span>
                     </div>
-                    <a id="ha" href="player.jsp?id=<c:out value='${row3.id}'/>" title="<c:out value='${row3.tvName}'/>" class="r71">
+                    <a id="ha" href="aplayer.jsp?id=<c:out value='${row3.id}'/>" title="<c:out value='${row3.tvName}'/>" class="r71">
                         <p><c:out value='${row3.tvName}'/></p>
                         <img id="ca" class="i" alt="<c:out value='${row3.tvName}'/>" src="<c:out value='${row3.tvImgUrl}'/>" name="<c:out value='${row3.tvImgUrl}'/>">
                     </a>
@@ -337,13 +334,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                 <div id="si"> <span>&nbsp;402&nbsp;<span class="sm">人喜欢&nbsp;</span></span>
                 </div>
                 <div id="sp">
-                    <div id="sp1"><a href="player.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>"><c:out value='${row4.tvName}'/></a>
+                    <div id="sp1"><a href="aplayer.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>"><c:out value='${row4.tvName}'/></a>
                     </div>
                     <div id="sp2">频道：<a href="page.jsp?u=sy" id="LE" target="_blank"><%=tvTypeName %></a>
                     </div>
                     <div id="sp3"><i id="bi"></i>&nbsp;663313&nbsp;次播放</div>
                 </div>
-                <a id="sa" href="player.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>" target="_blank" class="r43">
+                <a id="sa" href="aplayer.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>" target="_blank" class="r43">
                     <img id="ka" alt="<c:out value='${row4.tvName}'/>" src="<c:out value='${row4.tvImgUrl}'/>" name="<c:out value='${row4.tvImgUrl}'/>" class="r24" style="display: inline;">
                 </a>
             </li>
@@ -360,49 +357,14 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var flashvars;
 	var tvimg;
 	function show() {
-		  var typea='<%=plat%>';
-		  if(typea.indexOf("JIU")>=0){
-			  ps='<%=tvUrl%>';
-			  tvimg='<%=tvImgUrl%>';
-		  }else if(typea.indexOf("LIAN")>=0){
-			  ps = "";
-			  tvimg='<%=tvImgUrl%>!960,571';
-		  }
 		  
-		  flashvars={
-	    			f:ps,
-	    			a:'',
-	    			s:'0',
-	    			c:'0',
-	    			x:'',
-	    			i:tvimg,
-	    			e:'2',
-	    			v:'50',
-	    			p:'0',
-	    			h:'3',
-	    			wh:'4:3',
-	    			lv:'0',
-	    			Title:'<%=tvName%>',
-	    			deft:'流畅432P,高清540P,超清720P',
-	    			deff:'<%=hdVideoUrl%>|<%=hcVideoUrl%>|<%=heVideoUrl%>',
-	    			loaded:'loadedHandler'
-	    			};
-	    		var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always'};
-	    		var video=[ps+'>video/mp4'];
-	    		CKobject.embed('ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video,params);
-	      
 	}
-	function loadedHandler(){
-		if(CKobject.getObjectById('ckplayer_a1').getType()){//说明使用html5播放器
-			document.title="正在播放："+flashvars.Title;
+	$('#player1').mediaelementplayer({
+		success: function(media, node, player) {
+			var events = ['loadstart', 'play','pause', 'ended'];
 			
 		}
-		else{
-			document.title="正在播放："+flashvars.Title;
-			
-		}
-	}
-	
+	});
 	</script>
 <style>
 	.hm2 {
@@ -426,6 +388,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	.co {
 	    background-color: #8A484F!important;
 	}
+	#a12 {
+    position: relative;
+    z-index: 1000;
+    width: 960px;
+    height: 571px;
+    margin: auto;
+}
 </style>
 </body>
 </html>
