@@ -8,8 +8,9 @@ import com.tv.impl.LetvModelImpl;
 import com.tv.impl.TvModelImpl;
 import com.tv.impl.getAllWebSiteUrl;
 import com.tv.model.TvModel;
+import com.tv.util.AbstractSpider;
 
-public class TestCase{
+public class TestCase extends AbstractSpider{
 	@Test
 	public void getYinYueTaiList(){
 		TvModelImpl tvmodelImpl = new TvModelImpl();
@@ -148,5 +149,17 @@ public class TestCase{
 			System.out.println(dizhi);
 		
 
+	}
+	
+	
+	@Test
+	public void get51AVITest(){
+		try {
+			String result = super.crawl("http://www.av51.biz/");
+			System.out.println(result);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
