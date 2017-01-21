@@ -144,7 +144,7 @@ public class TestCase{
 	public void getTvUrlTest(){
 		GetTvUrlImpl gettvurlImpl = new GetTvUrlImpl(); 
 		String dizhi;
-			dizhi = gettvurlImpl.getTvUrlImgUrl("http://www.99ff1.com/videos/59657/010414-730-1pon/");
+			dizhi = gettvurlImpl.getTvUrlImgUrl("http://shenqu.yy.com/play/id_1115567960184884924.html");
 			System.out.println(dizhi);
 		
 

@@ -124,6 +124,11 @@
 								<a href="9y.jsp?u=gj" target="_blank">肛交</a>
 								<a href="9y.jsp?u=hgzh" target="_blank">韩国综合</a>
 								<a href="9y.jsp?u=gq" target="_blank">高清</a>
+								<a href="yys.jsp?u=yyyqyz" target="_blank">YY乐器演奏</a>
+								<a href="yys.jsp?u=yydt" target="_blank">YY神曲动听</a>
+								<a href="yys.jsp?u=yyll" target="_blank">YY神曲另类</a>
+								<a href="yys.jsp?u=yyrw" target="_blank">YY神曲热舞</a>
+								<a href="yys.jsp?u=yysc" target="_blank">YY神曲说唱</a>
 								<a class="bgn">即将上线···</a>
 							</div>
                     </div>
@@ -172,15 +177,15 @@
 				SELECT CEIL(COUNT(*)/20) AS sl FROM db_tvurls where typeName like '%<%=context%>%';
 			</sql:query>
         <div id="ys">
-        <div id='ys'><a id='ye' href='page.jsp?u=<%=us %>&s=<%=p-1 %>' title='上一页'><</a>
+        <div id='ys'><a id='ye' href='9y.jsp?u=<%=us %>&s=<%=p-1 %>' title='上一页'><</a>
         <span id="ye" class="on r17" title="当前页-第<%=p %>页"><%=p %></span>  
-        <a id="ye" href="page.jsp?u=<%=us %>&s=<%=p2 %>" title="第<%=p2 %>页" class="r73"><%=p2 %></a>
-        <a id="ye" href="page.jsp?u=<%=us %>&s=<%=p3 %>" title="第<%=p3 %>页" class="r40"><%=p3 %></a>
+        <a id="ye" href="9y.jsp?u=<%=us %>&s=<%=p2 %>" title="第<%=p2 %>页" class="r73"><%=p2 %></a>
+        <a id="ye" href="9y.jsp?u=<%=us %>&s=<%=p3 %>" title="第<%=p3 %>页" class="r40"><%=p3 %></a>
         <span id="ye" class="r82">...</span>
         <c:forEach var="row2" items="${result2.rows}">
-        	<a id="ye" href="page.jsp?u=<%=us %>&s=<c:out value='${row2.sl}'/>" title="最后一页" class="r35"><c:out value='${row2.sl}'/></a>
+        	<a id="ye" href="9y.jsp?u=<%=us %>&s=<c:out value='${row2.sl}'/>" title="最后一页" class="r35"><c:out value='${row2.sl}'/></a>
         </c:forEach>
-        <a id="ye" href="page.jsp?u=<%=us %>&s=<%=p2 %>" title="下一页" class="r4">&gt;</a>
+        <a id="ye" href="9y.jsp?u=<%=us %>&s=<%=p2 %>" title="下一页" class="r4">&gt;</a>
         </div>
         <div id="xt" class="ne">
             <div id="xtx">×</div>

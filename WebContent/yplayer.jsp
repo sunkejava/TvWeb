@@ -1,24 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="java.io.*,java.util.*,net.sf.json.JSONObject,java.sql.*,net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*"%>
+<%@ page import="java.io.*,java.util.*,net.sf.json.JSONObject,java.sql.*,
+net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*,com.tv.impl.GetTvUrlImpl"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 			String IDS =request.getParameter("id");
-			IDS=IDS.matches(".*[a-zA-Z]+.*")?"79294":IDS;
+			IDS=IDS==""|| IDS == null ?"144661":IDS;
+			IDS=IDS.matches(".*[a-zA-Z]+.*")?"144661":IDS;
 			String result =DbUtil.getContextFromID(IDS);
 			String[] ps = result.split("----");
 			String plat="";
 			int platFormID;
-			String a="";
-			String b="";
-			String c="";
-			String d="";
-			String e="";
-			String f="";
-			String g="";
 			String hdVideoUrl="";
 			String hcVideoUrl="";
 			String heVideoUrl="";
@@ -41,29 +36,20 @@
 			tvTagsName = ps[4];
 			tvContext = ps[5];
 			platID = ps[6];
-			tvTypeName = ps[7];
-			tvTypeName=tvTypeName.indexOf("(")>-1?StringUtil.leftString(tvTypeName, "("):tvTypeName;	
-			if(platID.equals("恋恋影视")){
-				plat="LIAN";
-				platFormID=1;
-				JSONArray result22 = DataJsonp.GetDate(plat, tvUrl);
-				 a = result22.getJSONObject(0).get("ks").toString();
-				 b = result22.getJSONObject(0).get("type").toString();
-				 c = result22.getJSONObject(0).get("k1").toString();
-				 d = result22.getJSONObject(0).get("k3").toString();
-				 e = result22.getJSONObject(0).get("k4").toString();
-				 f = result22.getJSONObject(0).get("k6").toString();
-				 g = result22.getJSONObject(0).get("k7").toString();
-			}else if(platID.equals("音悦台MV")){
-				plat="YINYUETAI";
-				platFormID=2;
-				JSONArray result22 = DataJsonp.GetDate(plat, tvUrl);
-				hdVideoUrl = result22.getJSONObject(0).get("hdVideoUrl").toString();
-				hcVideoUrl = result22.getJSONObject(0).get("hcVideoUrl").toString();
-				heVideoUrl = result22.getJSONObject(0).get("heVideoUrl").toString();
-				tvImgUrl = hdVideoUrl==("http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg")?"http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg":tvImgUrl;
-				}
+			tvTypeName = ps[7];	
+			if(platID.equals("YY神曲分类")){
+				plat="YYS";
+				GetTvUrlImpl gettvurl = new GetTvUrlImpl(); 
+				String TvAndImgUrl = gettvurl.getTvUrlImgUrl(tvUrl);
+				String[] tvimgs=TvAndImgUrl.split("----");
+				tvUrl=tvimgs[0];
+				tvImgUrl=tvimgs[1];
+				hdVideoUrl=hdVideoUrl=="" || hdVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : hdVideoUrl;
+				hcVideoUrl=hcVideoUrl=="" || hcVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : hcVideoUrl;
+				heVideoUrl=heVideoUrl=="" || heVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : heVideoUrl;
+				tvImgUrl = tvImgUrl=="" || tvImgUrl == null ?"http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg":tvImgUrl;
 			}
+		}
 			
 		%>
 <html>
@@ -199,9 +185,9 @@
         </div>
         <div id="hh" class="ne"></div>
         <div id="wr" class="cf cw wz jlx pg1 lb1 p5">
-       <a rev="<%= a %>" rel="<%= a %>" title="706" lang="4j216" 
+       <a rev="a" rel="a" title="706" lang="4j216" 
        	name="Ss1|Ss2|Ss3|Ss4" class="//a.aq-cn.com:88/b389" 
-       	type="<%= b %>" href="<%= a %>" id="n1"></a>
+       	type="b" href="a" id="n1"></a>
             <!--[if IE 6]><script src="js/tv1.js"></script><![endif]-->
             <script type="text/javascript" src="js/tv0.js"></script>
             <div class="cy">
@@ -259,12 +245,12 @@
             <sql:query dataSource="${snapshot}" var="result1">
 				SELECT id,tvName FROM db_tvurls where 
 				id between <%=IDS %>+1 and <%=IDS %>+51 and typeName like '%<%=tvTypeName %>%'
-				or(id between <%=IDS %>-1 and <%=IDS %>-51 and typeName like '%<%=tvTypeName %>%');
+				or (id between <%=IDS %>-1 and <%=IDS %>-51 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
 			<sql:query dataSource="${snapshot}" var="result2">
 				SELECT id,tvName FROM db_tvurls where 
 				id between <%=IDS %>+51 and <%=IDS %>+101 and typeName like '%<%=tvTypeName %>%'
-				or(id between <%=IDS %>-51 and <%=IDS %>-101 and typeName like '%<%=tvTypeName %>%');
+				or (id between <%=IDS %>-51 and <%=IDS %>-101 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
             <div id="jj">
                 <div id="jt"> 
@@ -290,24 +276,24 @@
                 <div id="jb">
 	                    <div id="j1">
 	                    	<c:forEach var="row1" items="${result1.rows}">
-		                    	<a href="player.jsp?id=<c:out value='${row1.id}'/>" target="_blank"><c:out value='${row1.tvName}'/></a>
+		                    	<a href="yplayer.jsp?id=<c:out value='${row1.id}'/>" target="_blank"><c:out value='${row1.tvName}'/></a>
 	                    	</c:forEach>
 	                    </div>
                     <div id="j2">
                     	<c:forEach var="row2" items="${result2.rows}">
-                    		<a href="player.jsp?id=<c:out value='${row2.id}'/>" target="_blank"><c:out value='${row2.tvName}'/></a>
+                    		<a href="yplayer.jsp?id=<c:out value='${row2.id}'/>" target="_blank"><c:out value='${row2.tvName}'/></a>
                     	</c:forEach>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
         <p>&nbsp;</p>
         <!-- rst -->
         <div id="xc" class="cf"><span id="xct">猜你喜欢</span>
             <br>
             <sql:query dataSource="${snapshot}" var="result3">
-				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls 
-				where id between <%=IDS %>+1 and <%=IDS %>+5 and typeName like '%<%=tvTypeName %>%'
+				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where 
+				id between <%=IDS %>+1 and <%=IDS %>+5 and typeName like '%<%=tvTypeName %>%'
 				or (id between <%=IDS %>-1 and <%=IDS %>-5 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
 			<c:forEach var="row3" items="${result3.rows}">
@@ -317,9 +303,9 @@
                     </div>
                     <div id="si"><span>&nbsp;9584&nbsp;<span class="sm">人喜欢&nbsp;</span></span>
                     </div>
-                    <a id="ha" href="player.jsp?id=<c:out value='${row3.id}'/>" title="<c:out value='${row3.tvName}'/>" class="r71">
+                    <a id="ha" href="yplayer.jsp?id=<c:out value='${row3.id}'/>" title="<c:out value='${row3.tvName}'/>" class="r71">
                         <p><c:out value='${row3.tvName}'/></p>
-                        <img id="ca" class="i" alt="<c:out value='${row3.tvName}'/>" src="<c:out value='${row3.tvImgUrl}'/>.165/210" name="<c:out value='${row3.tvImgUrl}'/>.165/210">
+                        <img id="ca" class="i" alt="<c:out value='${row3.tvName}'/>" src="<c:out value='${row3.tvImgUrl}'/>" name="<c:out value='${row3.tvImgUrl}'/>">
                     </a>
                 </div>
             </div>
@@ -335,7 +321,7 @@
         <div id="s1" class="s1 f2">
             <sql:query dataSource="${snapshot}" var="result4">
 				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls 
-				where id between <%=IDS %>+1 and <%=IDS %>+17 and typeName like '%<%=tvTypeName %>%';
+				where id between <%=IDS %>+1 and <%=IDS %>+17 and typeName like'%<%=tvTypeName %>%';
 			</sql:query>
 			<c:forEach var="row4" items="${result4.rows}">
             <li> 
@@ -343,14 +329,14 @@
                 <div id="si"> <span>&nbsp;402&nbsp;<span class="sm">人喜欢&nbsp;</span></span>
                 </div>
                 <div id="sp">
-                    <div id="sp1"><a href="player.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>"><c:out value='${row4.tvName}'/></a>
+                    <div id="sp1"><a href="yplayer.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>"><c:out value='${row4.tvName}'/></a>
                     </div>
                     <div id="sp2">频道：<a href="page.jsp?u=sy" id="LE" target="_blank"><%=tvTypeName %></a>
                     </div>
                     <div id="sp3"><i id="bi"></i>&nbsp;663313&nbsp;次播放</div>
                 </div>
-                <a id="sa" href="player.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>" target="_blank" class="r43">
-                    <img id="ka" alt="<c:out value='${row4.tvName}'/>" src="<c:out value='${row4.tvImgUrl}'/>!145,85" name="<c:out value='${row4.tvImgUrl}'/>!145,85" class="r24" style="display: inline;">
+                <a id="sa" href="yplayer.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>" target="_blank" class="r43">
+                    <img id="ka" alt="<c:out value='${row4.tvName}'/>" src="<c:out value='${row4.tvImgUrl}'/>" name="<c:out value='${row4.tvImgUrl}'/>" class="r24" style="display: inline;">
                 </a>
             </li>
             </c:forEach>
@@ -366,15 +352,9 @@
 	var flashvars;
 	var tvimg;
 	function show() {
-		var i1 = W("ke"),
-		rd1 = yp() ? i1 ? "m2" : "ms" : i1 ? "c2" : "cs";
-		  p = get();
-		  s = (yp() ? "" : rm(8));
-		  var q= "?k1=<%= c %>&k2="+rd1+s+"&k3=<%= d %>&k4=<%= e %>&k5=<%= a %>&k6=<%= f %>&k7=<%= g %>";
-		 
-		  var typea='<%=plat%>';
-		  if(typea.indexOf("YINYUETAI")>=0){
-			  ps='<%=hdVideoUrl%>';
+		var typea='<%=plat%>';
+		  if(typea.indexOf("YYS")>=0){
+			  ps='<%=tvUrl%>';
 			  tvimg='<%=tvImgUrl%>';
 		  }else if(typea.indexOf("LIAN")>=0){
 			  ps = p+q;
@@ -414,6 +394,7 @@
 			
 		}
 	}
+	 
 	
 	</script>
 <style>
@@ -438,6 +419,13 @@
 	.co {
 	    background-color: #8A484F!important;
 	}
+	#a12 {
+    position: relative;
+    z-index: 1000;
+    width: 960px;
+    height: 571px;
+    margin: auto;
+}
 </style>
 </body>
 </html>

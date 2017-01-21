@@ -240,6 +240,11 @@ public class StringUtil {
 			TASKS.put("vipc7","http://www.2ta.tv/vc/7v");
 			TASKS.put("vipc8","http://www.2ta.tv/vc/8v");
 			TASKS.put("vipc9","http://www.2ta.tv/vc/9v");
+			TASKS.put("乐器演奏","yyyqyz");
+			TASKS.put("动听","yydt");
+			TASKS.put("另类","yyll");
+			TASKS.put("热舞","yyrw");
+			TASKS.put("说唱","yysc");
 			String as ="http://www.2ta.tv/".concat(url);
 			String asa = "http://www.2ta.tv/vc/".concat(url);
 			for(Entry<String,String> entry :TASKS.entrySet()){

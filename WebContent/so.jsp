@@ -119,6 +119,11 @@
 								<a href="9y.jsp?u=gj" target="_blank">肛交</a>
 								<a href="9y.jsp?u=hgzh" target="_blank">韩国综合</a>
 								<a href="9y.jsp?u=gq" target="_blank">高清</a>
+								<a href="yys.jsp?u=yyyqyz" target="_blank">YY乐器演奏</a>
+								<a href="yys.jsp?u=yydt" target="_blank">YY神曲动听</a>
+								<a href="yys.jsp?u=yyll" target="_blank">YY神曲另类</a>
+								<a href="yys.jsp?u=yyrw" target="_blank">YY神曲热舞</a>
+								<a href="yys.jsp?u=yysc" target="_blank">YY神曲说唱</a>
 								<a class="bgn">即将上线···</a>
 							</div>
                     </div>

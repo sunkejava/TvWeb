@@ -163,6 +163,11 @@ net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*,com.tv.impl.GetTvUrlImpl"%>
 								<a href="9y.jsp?u=gj" target="_blank">肛交</a>
 								<a href="9y.jsp?u=hgzh" target="_blank">韩国综合</a>
 								<a href="9y.jsp?u=gq" target="_blank">高清</a>
+								<a href="yys.jsp?u=yyyqyz" target="_blank">YY乐器演奏</a>
+								<a href="yys.jsp?u=yydt" target="_blank">YY神曲动听</a>
+								<a href="yys.jsp?u=yyll" target="_blank">YY神曲另类</a>
+								<a href="yys.jsp?u=yyrw" target="_blank">YY神曲热舞</a>
+								<a href="yys.jsp?u=yysc" target="_blank">YY神曲说唱</a>
 								<a class="bgn">即将上线···</a>
 							</div>
                     </div>
@@ -196,14 +201,7 @@ net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*,com.tv.impl.GetTvUrlImpl"%>
                             <br> <span id="pt2">专辑&nbsp;&gt; <a href="page.jsp?u=sy" id="LE" target="_blank"><%=tvTagsName %></a>&nbsp;</span> 
                         </div>
                     </div>
-                    <video width="960" height="571" id="player1" 
-                    poster="<%=tvImgUrl %>" 
-                    controls="controls" preload="none">
-							<source src="<%=tvUrl %>" type="video/mp4" title="mp4">
-					</video>
-					<div id="output">
-					</div>				
-					<span id="player1-mode"></span>
+                    <div id="a1"></div>
                     <div id="zj" class="nb in">
                         <div id="iy" class="nb" style="display: none;">
                             
@@ -357,14 +355,49 @@ net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*,com.tv.impl.GetTvUrlImpl"%>
 	var flashvars;
 	var tvimg;
 	function show() {
+		var typea='<%=plat%>';
+		  if(typea.indexOf("JIU")>=0){
+			  ps='<%=tvUrl%>';
+			  tvimg='<%=tvImgUrl%>';
+		  }else if(typea.indexOf("LIAN")>=0){
+			  ps = p+q;
+			  tvimg='<%=tvImgUrl%>!960,571';
+		  }
 		  
+		  flashvars={
+	    			f:ps,
+	    			a:'',
+	    			s:'0',
+	    			c:'0',
+	    			x:'',
+	    			i:tvimg,
+	    			e:'2',
+	    			v:'50',
+	    			p:'0',
+	    			h:'3',
+	    			wh:'4:3',
+	    			lv:'0',
+	    			Title:'<%= tvName %>',
+	    			deft:'流畅432P,高清540P,超清720P',
+	    			deff:'<%=hdVideoUrl%>|<%=hcVideoUrl%>|<%=heVideoUrl%>',
+	    			loaded:'loadedHandler'
+	    			};
+	    		var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always'};
+	    		var video=[ps+'>video/mp4'];
+	    		CKobject.embed('ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video,params);
+	      
 	}
-	$('#player1').mediaelementplayer({
-		success: function(media, node, player) {
-			var events = ['loadstart', 'play','pause', 'ended'];
+	function loadedHandler(){
+		if(CKobject.getObjectById('ckplayer_a1').getType()){//说明使用html5播放器
+			document.title="正在播放："+flashvars.Title;
 			
 		}
-	});
+		else{
+			document.title="正在播放："+flashvars.Title;
+			
+		}
+	}
+	
 	</script>
 <style>
 	.hm2 {
