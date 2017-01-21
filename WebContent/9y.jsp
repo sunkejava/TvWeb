@@ -6,15 +6,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-			String search = new String(request.getParameter("s").getBytes("iso-8859-1"), "utf-8");
-			if(search=="" || search == null){
-				search="诱惑";
+			String us =request.getParameter("u");
+			String context ="";
+			if(us=="" || us == null){
+				response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+				String newLocn = "/TvWeb/index.jsp";
+				response.setHeader("Location",newLocn);
+			}else{
+				context = StringUtil.getContextFromUrl(us);
 			}
 			int p;
-			if(request.getParameter("p")==null || request.getParameter("p") == ""){
+			if(request.getParameter("s")==null || request.getParameter("s") == ""){
 				p=1;
 			}else{
-				p=Integer.parseInt(request.getParameter("p"));
+				p=Integer.parseInt(request.getParameter("s"));
 			}
 			if(p<1){
 				p=1;
@@ -25,7 +30,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title><%=search %> - Decline影视</title>
+<title><%=context %> - Decline影视</title>
 <link rel="stylesheet" href="css/tv.css" type="text/css" media="screen">
 <link rel="shortcut icon" href="http://m.syasn.com/favicon.ico" type="image/x-icon">
 </head>
@@ -148,11 +153,11 @@
      url="jdbc:mysql://localhost:3306/db_tv?useUnicode=true&characterEncoding=utf8"
      user="root"  password="perp123"/>
      		<sql:query dataSource="${snapshot}" var="result1">
-				SELECT id,tvName,tvImgUrl FROM db_tvurls where tagsName like '%<%=search%>%' and platformName='恋恋影视' limit <%=(p-1)*10 %>,10;
+				SELECT id,tvName,tvImgUrl FROM db_tvurls where typeName like '%<%=context%>%' limit <%=(p-1)*20 %>,20;
 			</sql:query>
 			<c:forEach var="row1" items="${result1.rows}">
             <div id="hm" class="hm"> <span class="add" id="13875" title="添加到点播单，稍后观看，在观看记录保存">+</span> 
-                <a id="ha" href="player.jsp?id=<c:out value='${row1.id}'/>" title="<c:out value='${row1.tvName}'/>" target="_blank" class="r50">
+                <a id="ha" href="aplayer.jsp?id=<c:out value='${row1.id}'/>" title="<c:out value='${row1.tvName}'/>" target="_blank" class="r50">
                     <div id="si" class="su"><span>&nbsp;173&nbsp;<span class="sm">&nbsp;次播放&nbsp;</span></span>
                     </div>
                     <div id="si"><span>&nbsp;0&nbsp;<span class="sm">人喜欢&nbsp;</span></span>
@@ -164,18 +169,18 @@
             </c:forEach>
         </div>
         <sql:query dataSource="${snapshot}" var="result2">
-				SELECT CEIL(COUNT(*)/10) AS sl FROM db_tvurls where tagsName like '%<%=search%>%' and platformName='恋恋影视';
+				SELECT CEIL(COUNT(*)/20) AS sl FROM db_tvurls where typeName like '%<%=context%>%';
 			</sql:query>
         <div id="ys">
-        <div id='ys'><a id='ye' href='so.jsp?s=<%=search %>&p=<%=p-1 %>' title='上一页'><</a>
+        <div id='ys'><a id='ye' href='page.jsp?u=<%=us %>&s=<%=p-1 %>' title='上一页'><</a>
         <span id="ye" class="on r17" title="当前页-第<%=p %>页"><%=p %></span>  
-        <a id="ye" href="so.jsp?s=<%=search %>&p=<%=p2 %>" title="第<%=p2 %>页" class="r73"><%=p2 %></a>
-        <a id="ye" href="so.jsp?s=<%=search %>&p=<%=p3 %>" title="第<%=p3 %>页" class="r40"><%=p3 %></a>
+        <a id="ye" href="page.jsp?u=<%=us %>&s=<%=p2 %>" title="第<%=p2 %>页" class="r73"><%=p2 %></a>
+        <a id="ye" href="page.jsp?u=<%=us %>&s=<%=p3 %>" title="第<%=p3 %>页" class="r40"><%=p3 %></a>
         <span id="ye" class="r82">...</span>
         <c:forEach var="row2" items="${result2.rows}">
-        	<a id="ye" href="so.jsp?s=<%=search %>&p=<c:out value='${row2.sl}'/>" title="最后一页" class="r35"><c:out value='${row2.sl}'/></a>
+        	<a id="ye" href="page.jsp?u=<%=us %>&s=<c:out value='${row2.sl}'/>" title="最后一页" class="r35"><c:out value='${row2.sl}'/></a>
         </c:forEach>
-        <a id="ye" href="so.jsp?s=<%=search %>&p=<%=p2 %>" title="下一页" class="r4">&gt;</a>
+        <a id="ye" href="page.jsp?u=<%=us %>&s=<%=p2 %>" title="下一页" class="r4">&gt;</a>
         </div>
         <div id="xt" class="ne">
             <div id="xtx">×</div>

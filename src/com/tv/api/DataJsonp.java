@@ -36,7 +36,7 @@ public class DataJsonp {
 	public static void main(String[] args) throws Exception {
 //		JSONArray restsss = GetDate("YY","99931031");//JSON及解析
 //		System.out.println(restsss);
-		JSONArray rest = GetDate("YINYUETAI","702474");
+		JSONArray rest = GetDate("YINYUETAI","814306");
 		System.out.println("hdVideoUrl:"+rest.getJSONObject(0).get("hdVideoUrl"));
 		System.out.println("hcVideoUrl:"+rest.getJSONObject(0).get("hcVideoUrl"));
 		System.out.println("heVideoUrl:"+rest.getJSONObject(0).get("heVideoUrl"));
@@ -151,12 +151,20 @@ public class DataJsonp {
 					//获取神曲名称并加入新的Json对象中
 					if(concent.has("hdVideoUrl")){
 						newjson.put("hdVideoUrl",StringUtil.leftString(concent.get("hdVideoUrl").toString(), "?"));
-					}else if(concent.has("hcVideoUrl")){
+					}else{
+						newjson.put("hdVideoUrl","http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg");
+					} 
+					if(concent.has("hcVideoUrl")){
 						//获取神曲歌手并加入新的Json对象中
 						newjson.put("hcVideoUrl", StringUtil.leftString(concent.get("hcVideoUrl").toString(), "?"));
-					}else if(concent.has("heVideoUrl")){
+					}else{
+						newjson.put("hcVideoUrl","http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg");
+					} 
+					if(concent.has("heVideoUrl")){
 						//获取歌曲播放地址并加入新的Json对象中
 						newjson.put("heVideoUrl",StringUtil.leftString(concent.get("heVideoUrl").toString(), "?"));
+					}else{
+						newjson.put("heVideoUrl","http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg");
 					}
 					
 					newjson.put("title",context);

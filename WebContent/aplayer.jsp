@@ -1,24 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="java.io.*,java.util.*,net.sf.json.JSONObject,java.sql.*,net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*"%>
+<%@ page import="java.io.*,java.util.*,net.sf.json.JSONObject,java.sql.*,
+net.sf.json.JSONArray,com.tv.util.*,com.tv.api.*,com.tv.impl.GetTvUrlImpl"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 			String IDS =request.getParameter("id");
-			IDS=IDS.matches(".*[a-zA-Z]+.*")?"79294":IDS;
+			IDS=IDS==""|| IDS == null ?"144661":IDS;
+			IDS=IDS.matches(".*[a-zA-Z]+.*")?"144661":IDS;
 			String result =DbUtil.getContextFromID(IDS);
 			String[] ps = result.split("----");
 			String plat="";
 			int platFormID;
-			String a="";
-			String b="";
-			String c="";
-			String d="";
-			String e="";
-			String f="";
-			String g="";
 			String hdVideoUrl="";
 			String hcVideoUrl="";
 			String heVideoUrl="";
@@ -41,31 +36,20 @@
 			tvTagsName = ps[4];
 			tvContext = ps[5];
 			platID = ps[6];
-			tvTypeName = ps[7];
-			tvTypeName=tvTypeName.indexOf("(")>-1?StringUtil.leftString(tvTypeName, "("):tvTypeName;	
-			if(platID.equals("恋恋影视")){
-				plat="LIAN";
-				platFormID=1;
-				JSONArray result22 = DataJsonp.GetDate(plat, tvUrl);
-				 a = result22.getJSONObject(0).get("ks").toString();
-				 b = result22.getJSONObject(0).get("type").toString();
-				 c = result22.getJSONObject(0).get("k1").toString();
-				 d = result22.getJSONObject(0).get("k3").toString();
-				 e = result22.getJSONObject(0).get("k4").toString();
-				 f = result22.getJSONObject(0).get("k6").toString();
-				 g = result22.getJSONObject(0).get("k7").toString();
-			}else if(platID.equals("音悦台MV")){
-				plat="YINYUETAI";
-				platFormID=2;
-				JSONArray result22 = DataJsonp.GetDate(plat, tvUrl);
-				hdVideoUrl = result22.getJSONObject(0).get("hdVideoUrl").toString();
-				hcVideoUrl = result22.getJSONObject(0).get("hcVideoUrl").toString();
-				heVideoUrl = result22.getJSONObject(0).get("heVideoUrl").toString();
+			tvTypeName = ps[7];	
+			if(platID.equals("久久热视频")){
+				plat="JIU";
+				GetTvUrlImpl gettvurl = new GetTvUrlImpl(); 
+				String TvAndImgUrl = gettvurl.getTvUrlImgUrl(tvUrl);
+				String[] tvimgs=TvAndImgUrl.split("----");
+				tvUrl=tvimgs[0];
+				tvImgUrl=tvimgs[1];
 				hdVideoUrl=hdVideoUrl=="" || hdVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : hdVideoUrl;
 				hcVideoUrl=hcVideoUrl=="" || hcVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : hcVideoUrl;
 				heVideoUrl=heVideoUrl=="" || heVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : heVideoUrl;
-				}
+				tvImgUrl = tvImgUrl=="" || tvImgUrl == null ?"http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg":tvImgUrl;
 			}
+		}
 			
 		%>
 <html>
@@ -157,6 +141,25 @@
 								<a href="page.jsp?u=fn" target="_blank">芬妮玉足</a>
 								<a href="page.jsp?u=ug" target="_blank">Ugirls尤果</a>
 								<a href="page.jsp?u=cz" target="_blank">赤足者</a>
+								<a href="9y.jsp?u=sm" target="_blank">SM性虐</a>
+								<a href="9y.jsp?u=ybd" target="_blank">一本道</a>
+								<a href="9y.jsp?u=sjp" target="_blank">三级片</a>
+								<a href="9y.jsp?u=djhot" target="_blank">东京热</a>
+								<a href="9y.jsp?u=zwzm" target="_blank">中文字幕</a>
+								<a href="9y.jsp?u=zfsw" target="_blank">制服丝袜</a>
+								<a href="9y.jsp?u=jlb" target="_blank">加勒比</a>
+								<a href="9y.jsp?u=kbys" target="_blank">口爆颜射</a>
+								<a href="9y.jsp?u=gczp" target="_blank">国产自拍</a>
+								<a href="9y.jsp?u=xgszh" target="_blank">小格式综合</a>
+								<a href="9y.jsp?u=dongm" target="_blank">成人动漫</a>
+								<a href="9y.jsp?u=wum" target="_blank">日本无码</a>
+								<a href="9y.jsp?u=youm" target="_blank">日本有码</a>
+								<a href="9y.jsp?u=lzr" target="_blank">李宗瑞全集</a>
+								<a href="9y.jsp?u=oum" target="_blank">欧美</a>
+								<a href="9y.jsp?u=cc" target="_blank">潮吹</a>
+								<a href="9y.jsp?u=gj" target="_blank">肛交</a>
+								<a href="9y.jsp?u=hgzh" target="_blank">韩国综合</a>
+								<a href="9y.jsp?u=gq" target="_blank">高清</a>
 								<a class="bgn">即将上线···</a>
 							</div>
                     </div>
@@ -177,9 +180,9 @@
         </div>
         <div id="hh" class="ne"></div>
         <div id="wr" class="cf cw wz jlx pg1 lb1 p5">
-       <a rev="<%= a %>" rel="<%= a %>" title="706" lang="4j216" 
+       <a rev="a" rel="a" title="706" lang="4j216" 
        	name="Ss1|Ss2|Ss3|Ss4" class="//a.aq-cn.com:88/b389" 
-       	type="<%= b %>" href="<%= a %>" id="n1"></a>
+       	type="b" href="a" id="n1"></a>
             <!--[if IE 6]><script src="js/tv1.js"></script><![endif]-->
             <script type="text/javascript" src="js/tv0.js"></script>
             <div class="cy">
@@ -235,10 +238,14 @@
                 </div><span id="bm"><i id="bi"></i><span>862318</span>&nbsp;次播放</span>
             </div>
             <sql:query dataSource="${snapshot}" var="result1">
-				SELECT id,tvName FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+101;
+				SELECT id,tvName FROM db_tvurls where 
+				id between <%=IDS %>+1 and <%=IDS %>+51 and typeName like '%<%=tvTypeName %>%'
+				or (id between <%=IDS %>-1 and <%=IDS %>-51 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
 			<sql:query dataSource="${snapshot}" var="result2">
-				SELECT id,tvName FROM db_tvurls where id between <%=IDS %>+101 and <%=IDS %>+201;
+				SELECT id,tvName FROM db_tvurls where 
+				id between <%=IDS %>+51 and <%=IDS %>+101 and typeName like '%<%=tvTypeName %>%'
+				or (id between <%=IDS %>-51 and <%=IDS %>-101 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
             <div id="jj">
                 <div id="jt"> 
@@ -293,7 +300,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <div id="xc" class="cf"><span id="xct">猜你喜欢</span>
             <br>
             <sql:query dataSource="${snapshot}" var="result3">
-				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+9;
+				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where 
+				id between <%=IDS %>+1 and <%=IDS %>+5 and typeName like '%<%=tvTypeName %>%'
+				or (id between <%=IDS %>-1 and <%=IDS %>-5 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
 			<c:forEach var="row3" items="${result3.rows}">
             <div class="hm">
@@ -304,7 +313,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                     </div>
                     <a id="ha" href="player.jsp?id=<c:out value='${row3.id}'/>" title="<c:out value='${row3.tvName}'/>" class="r71">
                         <p><c:out value='${row3.tvName}'/></p>
-                        <img id="ca" class="i" alt="<c:out value='${row3.tvName}'/>" src="<c:out value='${row3.tvImgUrl}'/>.165/210" name="<c:out value='${row3.tvImgUrl}'/>.165/210">
+                        <img id="ca" class="i" alt="<c:out value='${row3.tvName}'/>" src="<c:out value='${row3.tvImgUrl}'/>" name="<c:out value='${row3.tvImgUrl}'/>">
                     </a>
                 </div>
             </div>
@@ -319,7 +328,8 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <div class="alike cf ne"></div>
         <div id="s1" class="s1 f2">
             <sql:query dataSource="${snapshot}" var="result4">
-				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+17 and typeName='<%=tvTypeName %>';
+				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls 
+				where id between <%=IDS %>+1 and <%=IDS %>+17 and typeName like'%<%=tvTypeName %>%';
 			</sql:query>
 			<c:forEach var="row4" items="${result4.rows}">
             <li> 
@@ -334,7 +344,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                     <div id="sp3"><i id="bi"></i>&nbsp;663313&nbsp;次播放</div>
                 </div>
                 <a id="sa" href="player.jsp?id=<c:out value='${row4.id}'/>" title="<c:out value='${row4.tvName}'/>" target="_blank" class="r43">
-                    <img id="ka" alt="<c:out value='${row4.tvName}'/>" src="<c:out value='${row4.tvImgUrl}'/>!145,85" name="<c:out value='${row4.tvImgUrl}'/>!145,85" class="r24" style="display: inline;">
+                    <img id="ka" alt="<c:out value='${row4.tvName}'/>" src="<c:out value='${row4.tvImgUrl}'/>" name="<c:out value='${row4.tvImgUrl}'/>" class="r24" style="display: inline;">
                 </a>
             </li>
             </c:forEach>
@@ -350,18 +360,12 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var flashvars;
 	var tvimg;
 	function show() {
-		var i1 = W("ke"),
-		rd1 = yp() ? i1 ? "m2" : "ms" : i1 ? "c2" : "cs";
-		  p = get();
-		  s = (yp() ? "" : rm(8));
-		  var q= "?k1=<%= c %>&k2="+rd1+s+"&k3=<%= d %>&k4=<%= e %>&k5=<%= a %>&k6=<%= f %>&k7=<%= g %>";
-		 
 		  var typea='<%=plat%>';
-		  if(typea.indexOf("YINYUETAI")>=0){
-			  ps='<%=hdVideoUrl%>';
+		  if(typea.indexOf("JIU")>=0){
+			  ps='<%=tvUrl%>';
 			  tvimg='<%=tvImgUrl%>';
 		  }else if(typea.indexOf("LIAN")>=0){
-			  ps = p+q;
+			  ps = "";
 			  tvimg='<%=tvImgUrl%>!960,571';
 		  }
 		  
@@ -378,7 +382,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	    			h:'3',
 	    			wh:'4:3',
 	    			lv:'0',
-	    			Title:'<%= tvName %>',
+	    			Title:'<%=tvName%>',
 	    			deft:'流畅432P,高清540P,超清720P',
 	    			deff:'<%=hdVideoUrl%>|<%=hcVideoUrl%>|<%=heVideoUrl%>',
 	    			loaded:'loadedHandler'

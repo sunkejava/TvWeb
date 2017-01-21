@@ -61,9 +61,7 @@
 				hdVideoUrl = result22.getJSONObject(0).get("hdVideoUrl").toString();
 				hcVideoUrl = result22.getJSONObject(0).get("hcVideoUrl").toString();
 				heVideoUrl = result22.getJSONObject(0).get("heVideoUrl").toString();
-				hdVideoUrl=hdVideoUrl=="" || hdVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : hdVideoUrl;
-				hcVideoUrl=hcVideoUrl=="" || hcVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : hcVideoUrl;
-				heVideoUrl=heVideoUrl=="" || heVideoUrl == null ? "http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg" : heVideoUrl;
+				tvImgUrl = hdVideoUrl==("http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg")?"http://ww3.sinaimg.cn/large/a24d4f55jw1fbxjaxcfk8j20qo0fujrp.jpg":tvImgUrl;
 				}
 			}
 			
@@ -157,6 +155,25 @@
 								<a href="page.jsp?u=fn" target="_blank">芬妮玉足</a>
 								<a href="page.jsp?u=ug" target="_blank">Ugirls尤果</a>
 								<a href="page.jsp?u=cz" target="_blank">赤足者</a>
+								<a href="9y.jsp?u=sm" target="_blank">SM性虐</a>
+								<a href="9y.jsp?u=ybd" target="_blank">一本道</a>
+								<a href="9y.jsp?u=sjp" target="_blank">三级片</a>
+								<a href="9y.jsp?u=djhot" target="_blank">东京热</a>
+								<a href="9y.jsp?u=zwzm" target="_blank">中文字幕</a>
+								<a href="9y.jsp?u=zfsw" target="_blank">制服丝袜</a>
+								<a href="9y.jsp?u=jlb" target="_blank">加勒比</a>
+								<a href="9y.jsp?u=kbys" target="_blank">口爆颜射</a>
+								<a href="9y.jsp?u=gczp" target="_blank">国产自拍</a>
+								<a href="9y.jsp?u=xgszh" target="_blank">小格式综合</a>
+								<a href="9y.jsp?u=dongm" target="_blank">成人动漫</a>
+								<a href="9y.jsp?u=wum" target="_blank">日本无码</a>
+								<a href="9y.jsp?u=youm" target="_blank">日本有码</a>
+								<a href="9y.jsp?u=lzr" target="_blank">李宗瑞全集</a>
+								<a href="9y.jsp?u=oum" target="_blank">欧美</a>
+								<a href="9y.jsp?u=cc" target="_blank">潮吹</a>
+								<a href="9y.jsp?u=gj" target="_blank">肛交</a>
+								<a href="9y.jsp?u=hgzh" target="_blank">韩国综合</a>
+								<a href="9y.jsp?u=gq" target="_blank">高清</a>
 								<a class="bgn">即将上线···</a>
 							</div>
                     </div>
@@ -235,10 +252,14 @@
                 </div><span id="bm"><i id="bi"></i><span>862318</span>&nbsp;次播放</span>
             </div>
             <sql:query dataSource="${snapshot}" var="result1">
-				SELECT id,tvName FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+101;
+				SELECT id,tvName FROM db_tvurls where 
+				id between <%=IDS %>+1 and <%=IDS %>+51 and typeName like '%<%=tvTypeName %>%'
+				or(id between <%=IDS %>-1 and <%=IDS %>-51 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
 			<sql:query dataSource="${snapshot}" var="result2">
-				SELECT id,tvName FROM db_tvurls where id between <%=IDS %>+101 and <%=IDS %>+201;
+				SELECT id,tvName FROM db_tvurls where 
+				id between <%=IDS %>+51 and <%=IDS %>+101 and typeName like '%<%=tvTypeName %>%'
+				or(id between <%=IDS %>-51 and <%=IDS %>-101 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
             <div id="jj">
                 <div id="jt"> 
@@ -293,7 +314,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <div id="xc" class="cf"><span id="xct">猜你喜欢</span>
             <br>
             <sql:query dataSource="${snapshot}" var="result3">
-				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+9;
+				SELECT id,tvName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls 
+				where id between <%=IDS %>+1 and <%=IDS %>+5 and typeName like '%<%=tvTypeName %>%'
+				or (id between <%=IDS %>-1 and <%=IDS %>-5 and typeName like '%<%=tvTypeName %>%');
 			</sql:query>
 			<c:forEach var="row3" items="${result3.rows}">
             <div class="hm">
@@ -319,7 +342,8 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <div class="alike cf ne"></div>
         <div id="s1" class="s1 f2">
             <sql:query dataSource="${snapshot}" var="result4">
-				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls where id between <%=IDS %>+1 and <%=IDS %>+17 and typeName='<%=tvTypeName %>';
+				SELECT id,tvName,typeName,tvUrl,SUBSTRING_INDEX(tvImgUrl,'+',1) as tvImgUrl FROM db_tvurls 
+				where id between <%=IDS %>+1 and <%=IDS %>+17 and typeName like '%<%=tvTypeName %>%';
 			</sql:query>
 			<c:forEach var="row4" items="${result4.rows}">
             <li> 

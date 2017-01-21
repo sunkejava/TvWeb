@@ -171,6 +171,25 @@ public class StringUtil {
 			TASKS.put("Shenqu", "shenqu");
 	    	TASKS.put("神曲风云榜-日榜", "daily");
 			TASKS.put("神曲风云榜-月榜", "monthly");
+			TASKS.put("SM性虐", "sm");
+			TASKS.put("一本道", "ybd");
+			TASKS.put("三级片", "sjp");
+			TASKS.put("东京热", "djhot");
+			TASKS.put("中文字幕", "zwzm");
+			TASKS.put("制服丝袜", "zfsw");
+			TASKS.put("加勒比", "jlb");
+			TASKS.put("口爆颜射", "kbys");
+			TASKS.put("国产自拍", "gczp");
+			TASKS.put("小格式综合", "xgszh");
+			TASKS.put("成人动漫", "dongm");
+			TASKS.put("日本无码", "wum");
+			TASKS.put("日本有码", "youm");
+			TASKS.put("李宗瑞全集", "lzr");
+			TASKS.put("欧美", "oum");
+			TASKS.put("潮吹", "cc");
+			TASKS.put("肛交", "gj");
+			TASKS.put("韩国综合", "hgzh");
+			TASKS.put("高清", "gq");
 	    	TASKS.put("Beautyleg","http://www.2ta.tv/b");
 			TASKS.put("3AGirL","http://www.2ta.tv/3a");
 			TASKS.put("4K-STAR","http://www.2ta.tv/4k");
@@ -224,10 +243,8 @@ public class StringUtil {
 			String as ="http://www.2ta.tv/".concat(url);
 			String asa = "http://www.2ta.tv/vc/".concat(url);
 			for(Entry<String,String> entry :TASKS.entrySet()){
-				System.out.println(entry.getValue());
 				if(entry.getValue().equals(as) || entry.getValue().equals(asa) || entry.getValue().equals(url)){
 					p=entry.getKey();
-					System.out.println(p);
 				}else{
 					
 				}

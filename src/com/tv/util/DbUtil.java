@@ -43,9 +43,13 @@ public class DbUtil {
 	
 	public static void main(String[] args) {
 		//System.out.println(getresultOftvUrl("http://www.2ta.tv/3a9123423"));
-		System.out.println(DbUtil.getContextFromID("70429a"));
-		String str = "138145a";
-		System.out.println(str.matches(".*[^a-zA-Z]+.*"));
+		String[] spa=DbUtil.getContextFromID("144650").split("----");
+		System.out.println(spa);
+		for(int i=0;i<spa.length;i++){
+			System.out.println(spa[i]);
+		}
+		//String str = "138145a";
+		//System.out.println(str.matches(".*[^a-zA-Z]+.*"));
 	}
 	/**
 	 * 根据url判断数据库中是否存在，存在返回fasle,不存在返回true
